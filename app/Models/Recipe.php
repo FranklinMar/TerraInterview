@@ -9,7 +9,7 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    protected $table = 'recipies';
+    protected $table = 'recipes';
 
     //public $timestamps = false;
 
