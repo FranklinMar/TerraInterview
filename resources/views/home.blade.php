@@ -5,12 +5,12 @@
 <header class="masthead">
     <div class="container">
         <div class="masthead-subheading">Welcome To Our Kitchen!</div>
-        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Teach me how to cook</a>
+        <div class="masthead-heading text-uppercase">Are you ready to cook?</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#recipe">Teach me</a>
     </div>
 </header>
-<!-- Portfolio Grid-->
-<section class="page-section bg-light" id="portfolio">
+<!-- Recipe Grid-->
+<section class="page-section bg-light" id="recipe">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Recipies</h2>
@@ -19,16 +19,16 @@
         <div class="row">
           @for ($i = 0; $i < $recipes->count(); $i++)
           <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="portfolio-item">
-                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal{{ $i + 1 }}">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content"><h4>More</h4></div>
+            <div class="recipe-item">
+                <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal{{ $i + 1 }}">
+                    <div class="recipe-hover">
+                        <div class="recipe-hover-content"><h4>More</h4></div>
                     </div>
                     <img class="img-fluid" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
                 </a>
-                <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">{{$recipes[$i]->name}}</div>
-                    <div class="portfolio-caption-subheading text-muted">{{Str::limit(explode('. ' ,$recipes[$i]->description)[0], 50, '...')}}</div>
+                <div class="recipe-caption">
+                    <div class="recipe-caption-heading">{{$recipes[$i]->name}}</div>
+                    <div class="recipe-caption-subheading text-muted">{{Str::limit(explode('. ' ,$recipes[$i]->description)[0], 50, '...')}}</div>
                 </div>
             </div>
           </div>
