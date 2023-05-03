@@ -9,6 +9,8 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $table = 'recipies';
+
     //public $timestamps = false;
 
     protected $primaryKey = 'id';
@@ -16,7 +18,8 @@ class Recipe extends Model
 
     protected $fillable = [
       'name',
-      'description'
+      'description',
+      'img'
     ];
 
     public function ingredients() {

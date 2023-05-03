@@ -9,6 +9,8 @@ class Quantity extends Model
 {
     use HasFactory;
 
+    protected $table = 'quantities';
+
     //public $timestamps = false;
 
     protected $primaryKey = 'id';

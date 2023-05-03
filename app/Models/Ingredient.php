@@ -9,6 +9,8 @@ class Ingredient extends Model
 {
     use HasFactory;
 
+    protected $table = 'ingridients';
+
     //public $timestamps = false;
 
     protected $primaryKey = 'id';
