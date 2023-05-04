@@ -10,6 +10,9 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+ }
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -10949,8 +10952,9 @@ p {
   }
 }
 header.masthead {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
+  max-height: 60%;
+  padding-top: 30%;
+  padding-bottom: 20%;
   text-align: center;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.55);

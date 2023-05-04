@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 });*/
 Route::get('/', [BaseController::class, 'home']);
 Route::get('/login', [AuthController::class, 'signIn']);
+Route::get('/register', [AuthController::class, 'signUp']);
