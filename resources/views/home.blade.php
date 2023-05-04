@@ -34,47 +34,47 @@
           </div>
           @endfor
             {{-- <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- Portfolio item 1-->
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><h4>More</h4></div>
+                <!-- recipe item 1-->
+                <div class="recipe-item">
+                    <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal1">
+                        <div class="recipe-hover">
+                            <div class="recipe-hover-content"><h4>More</h4></div>
                         </div>
-                        <img class="img-fluid" src="img/portfolio/1.jpg" alt="..." />
+                        <img class="img-fluid" src="img/recipe/1.jpg" alt="..." />
                     </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Threads</div>
-                        <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                    <div class="recipe-caption">
+                        <div class="recipe-caption-heading">Threads</div>
+                        <div class="recipe-caption-subheading text-muted">Illustration</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- Portfolio item 2-->
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><h4>More</h4></div>
+                <!-- recipe item 2-->
+                <div class="recipe-item">
+                    <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal2">
+                        <div class="recipe-hover">
+                            <div class="recipe-hover-content"><h4>More</h4></div>
                         </div>
-                        <img class="img-fluid" src="img/portfolio/2.jpg" alt="..." />
+                        <img class="img-fluid" src="img/recipe/2.jpg" alt="..." />
                     </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Explore</div>
-                        <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                    <div class="recipe-caption">
+                        <div class="recipe-caption-heading">Explore</div>
+                        <div class="recipe-caption-subheading text-muted">Graphic Design</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- Portfolio item 3-->
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><h4>More</h4></div>
+                <!-- recipe item 3-->
+                <div class="recipe-item">
+                    <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal3">
+                        <div class="recipe-hover">
+                            <div class="recipe-hover-content"><h4>More</h4></div>
                         </div>
-                        <img class="img-fluid" src="/img/portfolio/3.jpg" alt="..." />
+                        <img class="img-fluid" src="/img/recipe/3.jpg" alt="..." />
                     </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Finish</div>
-                        <div class="portfolio-caption-subheading text-muted">Identity</div>
+                    <div class="recipe-caption">
+                        <div class="recipe-caption-heading">Finish</div>
+                        <div class="recipe-caption-subheading text-muted">Identity</div>
                     </div>
                 </div>
             </div> --}}
@@ -224,9 +224,40 @@
         </form>
     </div>
 </section>
-<!-- Portfolio Modals-->
-<!-- Portfolio item 1 modal popup-->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- recipe Modals-->
+<!-- recipe item 1 modal popup-->
+@for ($i = 0; $i < $recipes->count(); $i++)
+<div class="recipe-modal modal fade" id="recipeModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content w-50 align-items-center">
+          <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="">
+                      <div class="modal-body">
+                          <!-- Project details-->
+                          <h2 class="text-uppercase">{{ $recipes[$i]->name }}</h2>
+                          <p class="item-intro text-muted">{{ $recipes[$i]->description }}</p>
+                          <img class="img-fluid d-block mx-auto" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
+                          <p>{{$recipes[$i]->instructions}}</p>
+                          <p class="item-intro text-muted h-4">Ingredients</p>
+                          <ul class="list-inline">
+                              @foreach($recipes[$i]->ingredients as $ingredient)
+                              <li>
+                                  <strong>{{$ingredient->ingredient->name}}</strong> - 
+                                  {{ $ingredient->quantity.' '.$ingredient->ingredient->measure }} ({{ $ingredient->ingredient->price }}$);
+                              </li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+@endfor
+{{-- <div class="recipe-modal modal fade" id="recipeModal1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
@@ -237,7 +268,7 @@
                             <!-- Project details-->
                             <h2 class="text-uppercase">Project Name</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/1.jpg" alt="..." />
+                            <img class="img-fluid d-block mx-auto" src="/img/recipe/1.jpg" alt="..." />
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                             <ul class="list-inline">
                                 <li>
@@ -260,8 +291,8 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 2 modal popup-->
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- recipe item 2 modal popup-->
+<div class="recipe-modal modal fade" id="recipeModal2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
@@ -272,7 +303,7 @@
                             <!-- Project details-->
                             <h2 class="text-uppercase">Project Name</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/2.jpg" alt="..." />
+                            <img class="img-fluid d-block mx-auto" src="/img/recipe/2.jpg" alt="..." />
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                             <ul class="list-inline">
                                 <li>
@@ -295,8 +326,8 @@
         </div>
     </div>
 </div>
-<!-- Portfolio item 3 modal popup-->
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- recipe item 3 modal popup-->
+<div class="recipe-modal modal fade" id="recipeModal3" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
@@ -307,7 +338,7 @@
                             <!-- Project details-->
                             <h2 class="text-uppercase">Project Name</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/3.jpg" alt="..." />
+                            <img class="img-fluid d-block mx-auto" src="/img/recipe/3.jpg" alt="..." />
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                             <ul class="list-inline">
                                 <li>
@@ -329,5 +360,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

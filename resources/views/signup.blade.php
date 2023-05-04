@@ -28,7 +28,7 @@
       </div>
       <div class="text-success mb-1">&NonBreakingSpace;
       </div>
-      <a href="/login" class="link-light mb-1">Already signed up?</a>
+      <a href="{{ route('Login') }}" class="link-light mb-1">Already signed up?</a>
       <button id="submit" type="submit" class="w-75 mb-4 btn btn-warning text-white btn-xl text-uppercase" href="#recipe" disabled>Sign Up</button>
     </form>     
   </div>

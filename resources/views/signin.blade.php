@@ -16,7 +16,7 @@
         <input type="password" name="password" id="password" class="bg-dark text-white form-control form-control-sm" placeholder="Password" required>
         <label for="password" class="form-label bg-transparent">Password</label>
       </div>
-      <a href="/register" class="link-light mb-1">Don't have an account?</a>
+      <a href="{{ route('Register') }}" class="link-light mb-1">Don't have an account?</a>
       <button type="submit" class="w-75 mb-4 btn btn-warning text-white btn-xl text-uppercase" href="#recipe">Sign In</button>
     </form>     
   </div>
