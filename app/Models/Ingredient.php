@@ -18,11 +18,10 @@ class Ingredient extends Model
 
     protected $fillable = [
       'name',
-      'description',
-      'price' // Price per unit
+      'measure'
     ];
     
-    public function recipies() {
+    public function quantities() {
       return $this->hasMany(Quantity::class, 'id');
     }
 }

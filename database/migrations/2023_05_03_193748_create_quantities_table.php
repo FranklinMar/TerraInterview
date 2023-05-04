@@ -15,9 +15,10 @@ class CreateQuantitiesTable extends Migration
     {
         Schema::create('quantities', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->foreignIdFor(Recipe::class);
+            $table->decimal('quantity');
+            $table->decimal('price')->default(0);
             $table->foreignIdFor(Ingredient::class);
+            $table->foreignIdFor(Recipe::class);
             //$table->timestamps();
         });
     }

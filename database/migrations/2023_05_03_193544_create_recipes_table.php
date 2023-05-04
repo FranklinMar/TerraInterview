@@ -13,9 +13,10 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('img');
+            $table->string('name')->unique();
             $table->text('description');
+            $table->text('instructions');
+            $table->string('img');
             //$table->timestamps();
         });
     }
