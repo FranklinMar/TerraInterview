@@ -8,12 +8,12 @@
     <form method="POST" action="" class="text-white card border-0 bg-transparent align-items-center">
       <div class="form-floating bg-dark mb-2 w-75">
         @csrf
-        <input type="text" id="login" class="bg-dark text-white form-control form-control-sm" placeholder="Email or Name" required>
+        <input type="text" name="login" id="login" class="bg-dark text-white form-control form-control-sm" placeholder="Email or Name" required>
         <label for="login" class="form-label bg-transparent">Email or Name</label>
       </div>
       <div class="form-floating bg-dark mb-1 w-75">
         @csrf
-        <input type="password" id="password" class="bg-dark text-white form-control form-control-sm" placeholder="Password" required>
+        <input type="password" name="password" id="password" class="bg-dark text-white form-control form-control-sm" placeholder="Password" required>
         <label for="password" class="form-label bg-transparent">Password</label>
       </div>
       <a href="/register" class="link-light mb-1">Don't have an account?</a>

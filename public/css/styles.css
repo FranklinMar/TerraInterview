@@ -10952,8 +10952,8 @@ p {
   }
 }
 header.masthead {
-  max-height: 60%;
-  padding-top: 30%;
+  max-height: 100vh;
+  padding-top: 10%;
   padding-bottom: 20%;
   text-align: center;
   color: #fff;
@@ -10982,8 +10982,8 @@ header.masthead .masthead-heading {
 
 @media (min-width: 768px) {
   header.masthead {
-    padding-top: 17rem;
-    padding-bottom: 12.5rem;
+    padding-top: 10%;
+    padding-bottom: 10%;
   }
   header.masthead .masthead-subheading {
     font-size: 2.25rem;
