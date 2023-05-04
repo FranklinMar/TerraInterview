@@ -37,7 +37,13 @@
                       <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
                       <li class="nav-item"><a class="nav-link" href="/#team">Team</a></li>
                       <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                      @guest
                       <li class="nav-item"><a class="nav-link" href="/login">Sign In</a></li>
+                      <li class="nav-item"><a class="nav-link btn btn-warning" href="/register">Sign Up</a></li>
+                      @endguest
+                      @auth
+                      <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+                      @endauth
                   </ul>
               </div>
           </div>

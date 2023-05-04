@@ -14,7 +14,12 @@ document.querySelectorAll('input[type="password"]')
       div.setAttribute('class', 'text-danger');
       div.innerText = 'Passwords do not match';
       Button.disabled = true;
-    } else {
+    } else if (Password.value.length < 8) {
+      div.setAttribute('class', 'text-danger');
+      div.innerText = 'Password size must be at least 8';
+      Button.disabled = true;
+    }
+    else {
       div.setAttribute('class', 'text-success');
       div.innerText = 'Passwords match';
       Button.disabled = false;
