@@ -15,6 +15,7 @@ class CreateIngredientsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('measure');
+            $table->decimal('price')->default(0);
             $table->unique(['name', 'measure']);
             //$table->timestamps();
         });

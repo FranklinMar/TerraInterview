@@ -9,7 +9,7 @@ class Ingredient extends Model
 {
     use HasFactory;
 
-    protected $table = 'ingridients';
+    protected $table = 'ingredients';
 
     //public $timestamps = false;
 
@@ -18,10 +18,11 @@ class Ingredient extends Model
 
     protected $fillable = [
       'name',
-      'measure'
+      'measure',
+      'price' // Price per unit
     ];
     
     public function quantities() {
-      return $this->hasMany(Quantity::class, 'id');
+      return $this->hasMany(Quantity::class, 'ingredient_id');
     }
 }

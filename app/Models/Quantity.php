@@ -17,8 +17,7 @@ class Quantity extends Model
     protected $guarded = [];
 
     protected $fillable = [
-      'quantity',
-      'price' // Price per unit
+      'quantity'
     ];
 
     public function ingredient() {

@@ -24,6 +24,6 @@ class Recipe extends Model
     ];
 
     public function ingredients() {
-      return $this->hasMany(Quantity::class, 'id');
+      return $this->hasMany(Quantity::class, 'recipe_id');
     }
 }
