@@ -21,10 +21,10 @@ class Quantity extends Model
     ];
 
     public function ingredient() {
-      return $this->belongsTo(Ingredient::class, 'id');
+      return $this->belongsTo(Ingredient::class);
     }
 
     public function recipe() {
-      return $this->belongsTo(Recipe::class, 'id');
+      return $this->belongsTo(Recipe::class);
     }
 }

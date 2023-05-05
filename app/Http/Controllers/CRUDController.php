@@ -15,7 +15,7 @@ class CRUDController extends Controller
 
     public function Update($name) {
       $name = str_replace('-', ' ', $name);
-      return view('updateRecipe', ['recipe' => Recipe::all()->where('name', $name)]);
+      return view('recipe', ['recipe' => Recipe::all()->where('name', $name)->first()]);
     }
 
     public function UpdatePost(Request $request) {
@@ -30,7 +30,7 @@ class CRUDController extends Controller
     
     public function Delete($name) {
       $name = str_replace('-', ' ', $name);
-      Recipe::destroy(Recipe::all()->where('name', $name));
+      Recipe::destroy(Recipe::all()->where('name', $name)->first());
       return redirect('/recipes');
     }
 }
