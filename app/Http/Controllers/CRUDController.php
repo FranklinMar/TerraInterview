@@ -82,7 +82,7 @@ class CRUDController extends Controller
           'name' => 'required',
           'description' => 'required',
           'instructions' => 'required',
-        ]); 
+        ]);
         $img = $validation['img'];
         $name = $validation['name'];
         $description = $validation['description'];
@@ -123,7 +123,9 @@ class CRUDController extends Controller
 
     public function Delete($name) {
       $name = str_replace('-', ' ', $name);
-      Recipe::destroy(Recipe::firstWhere('name', $name)());
+      $recipe = Recipe::firstWhere('name', $name);
+      Quantity::where('recipe_id', $recipe->id)->delete();
+      $recipe->delete();
       return redirect('/recipes');
     }
 }

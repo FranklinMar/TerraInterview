@@ -59,6 +59,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/recipes/edit/{name}', [CRUDController::class, 'UpdatePost'])->name('EditRecipePost');
         Route::get('/recipes/create/', [CRUDController::class, 'Create'])->name('CreateRecipe');
         Route::post('/recipes/create/', [CRUDController::class, 'CreatePost'])->name('CreateRecipePost');
-        Route::get('/recipes/delete/{name}', [CRUDController::class, 'Update'])->name('DeleteRecipe');
+        Route::get('/recipes/delete/{name}', [CRUDController::class, 'Delete'])->name('DeleteRecipe');
     });
 });
