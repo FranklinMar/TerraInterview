@@ -56,6 +56,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/logout', [AuthController::class, 'logout'])->name('Logout');
 
         Route::get('/recipes/edit/{name}', [CRUDController::class, 'Update'])->name('EditRecipe');
+        Route::post('/recipes/edit/{name}', [CRUDController::class, 'UpdatePost'])->name('EditRecipePost');
         Route::get('/recipes/delete/{name}', [CRUDController::class, 'Update'])->name('DeleteRecipe');
     });
 });

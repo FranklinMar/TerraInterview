@@ -36,8 +36,8 @@
       <input type="number" name="quantity[{{ $i }}]" class="bg-dark text-white form-control form-control-sm" min="0" value="{{ $quantity->quantity }}" required>
       @csrf
       <select name="quantity_recipe_id[{{ $i }}]" class="w-75 form-select" required>
-        @foreach($recipe->ingredients as $ingredient)
-        <option value='{{ $ingredient->ingredient->id }}' {{ $ingredient->ingredient->id == $quantity->ingredient->id ? 'selected' : ''}}>{{ $ingredient->ingredient->name }}</option>
+        @foreach($ingredients as $ingredient)
+        <option value='{{ $ingredient->id }}' {{ $ingredient->id == $quantity->ingredient->id ? 'selected' : ''}}>{{ $ingredient->name }}</option>
         @endforeach
       </select>
     </div>

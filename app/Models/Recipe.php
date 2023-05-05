@@ -11,6 +11,9 @@ class Recipe extends Model
 
     protected $table = 'recipes';
 
+    public $timetstamps = false;
+    const UPDATED_AT = null;
+    const CREATED_AT = null;
     //public $timestamps = false;
 
     protected $primaryKey = 'id';
