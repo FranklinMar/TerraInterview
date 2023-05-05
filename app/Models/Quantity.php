@@ -20,7 +20,9 @@ class Quantity extends Model
     protected $guarded = [];
 
     protected $fillable = [
-      'quantity'
+      'quantity',
+      'recipe_id',
+      'ingredient_id'
     ];
 
     public function ingredient() {

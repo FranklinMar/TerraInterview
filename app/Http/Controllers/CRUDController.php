@@ -34,9 +34,8 @@ class CRUDController extends Controller
       $name = $validation['name'];
       $description = $validation['description'];
       $instructions = $validation['instructions'];
-      $id_quantities = $request->post('quantity_id');
       $value_quantities = $request->post('quantity');
-      $id_quantities_recipe = $request->post('quantity_recipe_id');
+      $id_ingredients = $request->post('quantity_ingredient_id');
       //$quantities = array();
       $recipe = Recipe::all()->where('id', $id)->first();
       $recipe->name = $name;
@@ -57,16 +56,16 @@ class CRUDController extends Controller
         $img->storeAs('/public/images/', $img_name);
         $recipe->img = $img_name;
       }
-
-      for ($i = 0; $i < count($id_quantities); $i++) {
-        $object = Quantity::firstWhere('id', $id_quantities[$i]);
-        if ($object != null){
-          $object->quantity = $value_quantities[$i];
-          $object->ingredient_id = Ingredient::firstWhere('id', $id_quantities_recipe[$i])->id;
-          $object->save();
-        } else {
-          throw new Exception("Not found quantity");
-        }
+      $id_ingredients = array_values($id_ingredients);
+      $value_quantities = array_values($value_quantities);
+      Quantity::where('recipe_id', $id)->delete();
+      for ($i = 0; $i < count($value_quantities); $i++) {
+        $quantity = Quantity::create([
+            'quantity' => $value_quantities[$i],
+            'recipe_id' => $id,
+            'ingredient_id' => $id_ingredients[$i]
+        ]);
+        $quantity->save();
         //array_push($quantities, );
       }
       $recipe->save();
