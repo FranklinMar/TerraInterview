@@ -6,10 +6,10 @@
   <input type="hidden" name="id" value="{{ $recipe?->id }}">
   <div class="input-group" style="margin-top: 80px">
     <figure class="figure w-25">
-      <img class="img-fluid rounded figure-img" {{ $recipe == null ? 'style="display:none;"' : '' }} src="{{ url('/storage/images/'.$recipe?->img) }}" alt="..." />  
+      <img id="img" class="img-fluid rounded figure-img" {{ $recipe == null ? 'style="display:none;"' : '' }} src="{{ url('/storage/images/'.$recipe?->img) }}" alt="..." />  
     </figure>
     @csrf
-    <input type="file" name="img" class="bg-dark text-white" accept=".jpg, .png, .gif">
+    <input type="file" name="img" class="bg-dark text-white" accept=".jpg, .png, .gif" required>
   </div>
   <div class="form-floating mb-3">
     @csrf
@@ -29,7 +29,7 @@
   @if($recipe != null)
   @for($i = 0; $i < $recipe->ingredients->count(); $i++)
     @php($quantity = $recipe->ingredients[$i])
-    <div class="input-group mb-3">
+    <div class="input-group mb-2">
       @csrf
       <input type="hidden" name="quantity_id[{{ $i }}]" value="{{ $quantity->id }}">
       @csrf
@@ -43,10 +43,11 @@
     </div>
   @endfor
   @endif
-  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="btn btn-primary w-100" type="submit">Submit</button>
 </form>
 <script src="{{ asset('/js/textareas.js') }}">
-
-
+</script>
+<script>
+  loadURLToInputFiled("{{ url('/storage/images/'.$recipe?->img) }}", "{{ $recipe->img }}");
 </script>
 @endsection
