@@ -12,17 +12,10 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
   public function signIn() {
-    // User::create(['name' => 'Denys', 'email' => 'denisbereznuuk@gmail.com', 'password' => '1234']);
-    /*if (Auth::check()) {
-      return redirect()->intended();
-    }*/
     return view('signin');
   }
 
   public function signUp() {
-    /*if (Auth::check()) {
-      return redirect()->intended();
-    }*/
     return view('signup');
   }
 
@@ -33,18 +26,6 @@ class AuthController extends Controller
     ]);
     $login = $validation['login'];
     $password = $validation['password'];
-    /*if (Auth::attempt(['name' => $login, 'password' => $password])) {
-      $request->session()->regenerate();
-
-      return redirect()->intended();
-    } 
-    if (Auth::attempt(['email' => $login, 'password' => $password])) {
-      $request->session()->regenerate();
-
-      return redirect()->intended();
-    }
-    return back()->
-    withErrors(['login' => 'Cannot find user with such Name or Email']);*/
     $credentials = ['name' => $login, 'password' => $password];
     if (!Auth::attempt($credentials)) {
       $credentials = ['email' => $login, 'password' => $password];

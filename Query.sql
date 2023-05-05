@@ -1,12 +1,18 @@
-
-
 USE Recipes;
+/*INSERT INTO ingredients VALUES (DEFAULT, 'Strong bread flour', 'g', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Olive oil', 'Tablespoons', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Passata', 'ml', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Dried basil', 'Teaspoons', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Garlic', 'cloves', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Mozzarella', 'g', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Tomatoe', '', DEFAULT);
+
 INSERT INTO ingredients VALUES (DEFAULT, 'Warm water', 'Cups', DEFAULT);
 INSERT INTO ingredients VALUES (DEFAULT, 'Sugar', 'Teaspoons', DEFAULT);
 INSERT INTO ingredients VALUES (DEFAULT, 'Active dry yeast', 'Teaspoons', DEFAULT);
 INSERT INTO ingredients VALUES (DEFAULT, 'Flour', 'g', DEFAULT);
 INSERT INTO ingredients VALUES (DEFAULT, 'Plant oil', 'Tablespoons', DEFAULT);
-INSERT INTO ingredients VALUES (DEFAULT, 'Salt', 'Teaspoons', DEFAULT);
+INSERT INTO ingredients VALUES (DEFAULT, 'Salt', 'Teaspoons', DEFAULT);*/
 INSERT INTO recipes VALUES (DEFAULT, 'Pizza', 'This is a no-fuss dough recipe for beginners. You need just 6 basic ingredients, plus a little cornmeal for preparing the pan.\n Most of the time is hands off as the dough rises.', '“Bloom” the yeast by sprinkling the sugar and yeast in the warm water. Let sit for 10 minutes, until bubbles form on the surface.
 In a large bowl, combine the flour and salt. Make a well in the middle and add the olive oil and bloomed yeast mixture. Using a spoon, mix until a shaggy dough begins to form.
 Once the flour is mostly hydrated, turn the dough out onto a clean work surface and knead for 10-15 minutes. The dough should be soft, smooth, and bouncy. Form the dough into a taut round.
@@ -40,8 +46,5 @@ INSERT INTO quantities VALUES (DEFAULT, 1,
 (SELECT id FROM recipes WHERE name = 'Pizza'));
 
 SELECT * FROM quantities WHERE recipe_id = (SELECT id from recipes WHERE name = 'Pizza');
-# DELETE FROM recipes WHERE img = "Tasty Pizza";
-# UPDATE recipes SET description = "This is a no-fuss dough recipe for beginners. You need just 6 basic ingredients, plus a little cornmeal for preparing the pan.\n Most of the time is hands off as the dough rises." WHERE img = "1.jpg";
-# INSERT INTO users VALUES (DEFAULT, 'Denys', 'denisbereznuuk@gmail.com', '1234');
-# SELECT * FROM users;
-# SELECT * FROM recipes;
+SELECT * FROM users;
+SELECT * FROM recipes;

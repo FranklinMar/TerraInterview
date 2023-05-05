@@ -5,10 +5,8 @@ use Illuminate\Support\Str;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\Quantity;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Imagick;
 
 class CRUDController extends Controller
 {
@@ -36,8 +34,8 @@ class CRUDController extends Controller
       $instructions = $validation['instructions'];
       $value_quantities = $request->post('quantity');
       $id_ingredients = $request->post('quantity_ingredient_id');
-      //$quantities = array();
-      $recipe = Recipe::all()->where('id', $id)->first();
+
+      $recipe = Recipe::firstWhere('id', $id);
       $recipe->name = $name;
       $recipe->description = $description;
       $recipe->instructions = $instructions;
@@ -56,6 +54,9 @@ class CRUDController extends Controller
         $img->storeAs('/public/images/', $img_name);
         $recipe->img = $img_name;
       }
+      $recipe->save();
+
+
       $id_ingredients = array_values($id_ingredients);
       $value_quantities = array_values($value_quantities);
       Quantity::where('recipe_id', $id)->delete();
@@ -68,7 +69,6 @@ class CRUDController extends Controller
         $quantity->save();
         //array_push($quantities, );
       }
-      $recipe->save();
       return redirect('/recipes');
     }
 
