@@ -18,66 +18,21 @@
         </div>
         <div class="row">
           @for ($i = 0; $i < $recipes->count(); $i++)
-          <div class="col-lg-4 col-sm-6 mb-4">
+          <div class="col-lg-4 col-sm-6 mb-4 h-100">
             <div class="recipe-item">
                 <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal{{ $i + 1 }}">
                     <div class="recipe-hover">
                         <div class="recipe-hover-content"><h4>More</h4></div>
                     </div>
-                    <img class="img-fluid" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
+                    <img class="img-fluid h-75" src="{{ $recipes[$i]->img ? url('/storage/images/'.$recipes[$i]->img) : asset('/img/default-image.jpg') }}" alt="..." />
                 </a>
-                <div class="recipe-caption">
+                <div class="recipe-caption h-25">
                     <div class="recipe-caption-heading">{{$recipes[$i]->name}}</div>
                     <div class="recipe-caption-subheading text-muted">{{explode('. ' ,$recipes[$i]->description)[0]}}</div>
                 </div>
             </div>
           </div>
           @endfor
-            {{-- <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- recipe item 1-->
-                <div class="recipe-item">
-                    <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal1">
-                        <div class="recipe-hover">
-                            <div class="recipe-hover-content"><h4>More</h4></div>
-                        </div>
-                        <img class="img-fluid" src="img/recipe/1.jpg" alt="..." />
-                    </a>
-                    <div class="recipe-caption">
-                        <div class="recipe-caption-heading">Threads</div>
-                        <div class="recipe-caption-subheading text-muted">Illustration</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- recipe item 2-->
-                <div class="recipe-item">
-                    <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal2">
-                        <div class="recipe-hover">
-                            <div class="recipe-hover-content"><h4>More</h4></div>
-                        </div>
-                        <img class="img-fluid" src="img/recipe/2.jpg" alt="..." />
-                    </a>
-                    <div class="recipe-caption">
-                        <div class="recipe-caption-heading">Explore</div>
-                        <div class="recipe-caption-subheading text-muted">Graphic Design</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- recipe item 3-->
-                <div class="recipe-item">
-                    <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal3">
-                        <div class="recipe-hover">
-                            <div class="recipe-hover-content"><h4>More</h4></div>
-                        </div>
-                        <img class="img-fluid" src="/img/recipe/3.jpg" alt="..." />
-                    </a>
-                    <div class="recipe-caption">
-                        <div class="recipe-caption-heading">Finish</div>
-                        <div class="recipe-caption-subheading text-muted">Identity</div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 </section>
@@ -86,32 +41,32 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Our goals</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading text-muted">We want to bring joy and happines to the world with our work.</h3>
         </div>
         <div class="row text-center">
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-cutlery fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="my-3">E-Commerce</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h4 class="my-3">Tasty recipies</h4>
+                <p class="text-muted">Explore out most tasty, easy-to-cook and beautiful dishes with recipes and their ingredients.</p>
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="my-3">Responsive Design</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h4 class="my-3">Digital catalogue</h4>
+                <p class="text-muted">Explore and save your recipes from any device with our cloud.</p>
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-book fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="my-3">Web Security</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h4 class="my-3">Large variety</h4>
+                <p class="text-muted">There are thousands of different recipes in the world. Find your personal best with ingredients you have.</p>
             </div>
         </div>
     </div>
@@ -121,42 +76,43 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading text-muted">Information Technologies specialists ready to take the world on.</h3>
         </div>
         <div class="row">
             <div class="col-lg-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="/img/team/1.jpg" alt="..." />
-                    <h4>Parveen Anand</h4>
-                    <p class="text-muted">Lead Designer</p>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <img class="mx-auto rounded-circle" src="{{ asset('/img/team/1.jpg') }}" alt="..." />
+                    <h4>Andrew Berezniuk</h4>
+                    <p class="text-muted">Moral support</p>
+                    <a class="btn btn-dark btn-social mx-2" href="https://t.me/im_dron"><i class="fab fa-telegram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/imdron"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/a-berezniuk/"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="/img/team/2.jpg" alt="..." />
-                    <h4>Diana Petersen</h4>
-                    <p class="text-muted">Lead Marketer</p>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <img class="mx-auto rounded-circle" src="{{ asset('/img/team/2.jpg') }}" alt="..." />
+                    <h4>Denys Berezniuk</h4>
+                    <p class="text-muted">Lead Trainee Full-Stack Developer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="https://t.me/DenyaB"><i class="fab fa-telegram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/denya.bereznyk/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/denys-berezniuk/"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="/img/team/3.jpg" alt="..." />
-                    <h4>Larry Parker</h4>
-                    <p class="text-muted">Lead Developer</p>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <img class="mx-auto rounded-circle" src="{{ asset('/img/team/3.jpg') }}" alt="..." />
+                    <h4>Dmytro Demianyk</h4>
+                    <p class="text-muted">Moral support</p>
+                    <a class="btn btn-dark btn-social mx-2" href="https://t.me/r1eaktor"><i class="fab fa-telegram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">These are our people. Team of different, proactive IT-specialists
+                 sharing similiar experience and bonds to developer of this project.</p></div>
         </div>
     </div>
 </section>
@@ -165,7 +121,7 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading text-muted">* These fields are required.</h3>
         </div>
         <!-- * * * * * * * * * * * * * * *-->
         <!-- * * SB Forms Contact Form * *-->
@@ -225,12 +181,11 @@
     </div>
 </section>
 <!-- recipe Modals-->
-<!-- recipe item 1 modal popup-->
 @for ($i = 0; $i < $recipes->count(); $i++)
 <div class="recipe-modal modal fade" id="recipeModal1" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
-      <div class="modal-content w-50 align-items-center">
-          <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
+      <div class="modal-content w-50 mx-auto">
+          <div class="close-modal" data-bs-dismiss="modal"><img src="{{ asset('/img/close-icon.svg') }}" alt="Close modal" /></div>
           <div class="container">
               <div class="row justify-content-center">
                   <div class="">
@@ -238,13 +193,13 @@
                           <!-- Project details-->
                           <h2 class="text-uppercase">{{ $recipes[$i]->name }}</h2>
                           <p class="item-intro text-muted">{{ $recipes[$i]->description }}</p>
-                          <img class="img-fluid d-block mx-auto" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
+                          <img class="img-fluid d-block mx-auto rounded" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
                           <p>{{$recipes[$i]->instructions}}</p>
-                          <p class="item-intro text-muted h-4">Ingredients</p>
+                          <p class="item-intro text-muted h3">Ingredients</p>
                           <ul class="list-inline">
                               @foreach($recipes[$i]->ingredients as $ingredient)
                               <li>
-                                  <strong>{{$ingredient->ingredient->name}}</strong> - 
+                                  <strong>{{$ingredient->ingredient->name}}</strong> -
                                   {{ $ingredient->quantity.' '.$ingredient->ingredient->measure }} ({{ $ingredient->ingredient->price }}$);
                               </li>
                               @endforeach
@@ -257,108 +212,4 @@
   </div>
 </div>
 @endfor
-{{-- <div class="recipe-modal modal fade" id="recipeModal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="modal-body">
-                            <!-- Project details-->
-                            <h2 class="text-uppercase">Project Name</h2>
-                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="/img/recipe/1.jpg" alt="..." />
-                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>
-                                    <strong>Client:</strong>
-                                    Threads
-                                </li>
-                                <li>
-                                    <strong>Category:</strong>
-                                    Illustration
-                                </li>
-                            </ul>
-                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                <i class="fas fa-xmark me-1"></i>
-                                Close Project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- recipe item 2 modal popup-->
-<div class="recipe-modal modal fade" id="recipeModal2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="modal-body">
-                            <!-- Project details-->
-                            <h2 class="text-uppercase">Project Name</h2>
-                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="/img/recipe/2.jpg" alt="..." />
-                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>
-                                    <strong>Client:</strong>
-                                    Explore
-                                </li>
-                                <li>
-                                    <strong>Category:</strong>
-                                    Graphic Design
-                                </li>
-                            </ul>
-                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                <i class="fas fa-xmark me-1"></i>
-                                Close Project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- recipe item 3 modal popup-->
-<div class="recipe-modal modal fade" id="recipeModal3" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="modal-body">
-                            <!-- Project details-->
-                            <h2 class="text-uppercase">Project Name</h2>
-                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="/img/recipe/3.jpg" alt="..." />
-                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>
-                                    <strong>Client:</strong>
-                                    Finish
-                                </li>
-                                <li>
-                                    <strong>Category:</strong>
-                                    Identity
-                                </li>
-                            </ul>
-                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                <i class="fas fa-xmark me-1"></i>
-                                Close Project
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 @endsection

@@ -606,9 +606,8 @@ progress {
 
 .img-fluid {
   object-fit: cover;
-  max-width: 100%;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 300px;
 }
 
@@ -11007,6 +11006,8 @@ header.masthead .masthead-heading {
   position: relative;
   display: block;
   margin: 0 auto;
+  height: 100%;
+  min-height: 75%;
 }
 #recipe .recipe-item .recipe-link .recipe-hover {
   display: flex;
@@ -11048,7 +11049,6 @@ header.masthead .masthead-heading {
 }
 .recipe-modal .modal-content {
   padding-top: 6rem;
-  padding-bottom: 6rem;
   text-align: center;
 }
 .recipe-modal .modal-content h2, .recipe-modal .modal-content .h2 {
@@ -11063,10 +11063,10 @@ header.masthead .masthead-heading {
 .recipe-modal .modal-content p {
   margin-bottom: 2rem;
 }
-.recipe-modal .modal-content ul.list-inline {
-  margin-bottom: 2rem;
-}
+
 .recipe-modal .modal-content img {
+    height: 100%;
+    width: 100%;
   margin-bottom: 2rem;
 }
 .recipe-modal .close-modal {

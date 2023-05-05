@@ -4,13 +4,9 @@
 <form method="POST" enctype="multipart/form-data" action="" class="form-floating bg-dark pt-5 p-5">
   @csrf
   <input type="hidden" name="id" value="{{ $recipe?->id }}">
-  <div class="input-group" style="margin-top: 80px">
-    <figure class="figure w-25">
-      <img id="img" class="img-fluid rounded figure-img" src="{{ $recipe ? url('/storage/images/'.$recipe->img) : asset('img/default-image.jpg') }}" alt="..." />
-    </figure>
+    <img id="img" class="img-fluid rounded img-thumbnail mt-5 mb-1" src="{{ $recipe ? url('/storage/images/'.$recipe->img) : asset('img/default-image.jpg') }}" alt="..." />
     @csrf
-    <input type="file" name="img" class="bg-dark text-white" accept=".jpg, .png, .gif" required>
-  </div>
+    <input type="file" name="img" class="bg-dark text-white mb-3 w-100" accept=".jpg, .png, .gif" required>
   <div class="form-floating mb-3">
     @csrf
     <input type="text" id="name" name="name" class="bg-dark text-white form-control form-control-sm" placeholder="Name" value="{{ $recipe?->name }}" required>
@@ -26,20 +22,23 @@
     <textarea id="instructions" type="text" class="bg-dark text-white form-control form-control-sm" name="instructions" placeholder="Instructions" required>{{ $recipe?->instructions }}</textarea>
     <label for="instructions" class="form-label bg-transparent text-white">Instructions</label>
   </div>
+  <p class="item-intro text-muted h3">Ingredients</p>
   <div id="ingredients">
   @if($recipe != null)
   @for($i = 0; $i < $recipe->ingredients->count(); $i++)
     @php($quantity = $recipe->ingredients[$i])
     <div class="input-group mb-2">
       @csrf
-      <input type="number" name="quantity[{{ $i }}]" class="bg-dark text-white form-control form-control-sm" min="0" value="{{ $quantity->quantity }}" required>
+      <input type="number" name="quantity[{{ $i }}]" class="col-12 col-md-4 bg-dark text-white form-control form-control-sm" min="0" value="{{ $quantity->quantity }}" required>
+      {{-- <span class="input-group-text col-12 col-md-3">{{ $quantity->ingredient->measure }}</span> --}}
       @csrf
-      <select name="quantity_ingredient_id[{{ $i }}]" class="w-75 form-select" required>
+      <select name="quantity_ingredient_id[{{ $i }}]" class="col-12 col-md-4 form-select" required>
         @foreach($ingredients as $ingredient)
-          <option value='{{ $ingredient->id }}' {{ $ingredient->id == $quantity->ingredient->id ? 'selected' : ''}}>{{ $ingredient->name }}</option>
+          <option value='{{ $ingredient->id }}' {{ $ingredient->id == $quantity->ingredient->id ? 'selected' : ''}}>{{ $ingredient->name }}
+            {{ $ingredient->measure != '' ? '('.$ingredient->measure.')' : '' }}</option>
         @endforeach
       </select>
-      <a class="btn btn-danger remove">Remove</a>
+      <a class="btn btn-danger remove col-12 col-md-4">Remove</a>
     </div>
   @endfor
   @endif
@@ -49,7 +48,7 @@
   </div>
   <button class="btn btn-primary w-100" type="submit">Submit</button>
 </form>
-<script src="{{ asset('/js/textareas.js') }}">
+<script src="{{ asset('/js/recipe.js') }}">
 </script>
 <script>
     let url = "{{ url('/storage/images/'.$recipe?->img) }}";

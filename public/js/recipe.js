@@ -53,23 +53,23 @@ add.onclick = function() {
     let input_number = document.createElement('input');
     input_number.type = 'number';
     input_number.name = `quantity[${i}]`;
-    input_number.setAttribute('class', 'bg-dark text-white form-control form-control-sm');
+    input_number.setAttribute('class', 'col-12 col-md-4 bg-dark text-white form-control form-control-sm');
     input_number.min = 0;
     input_number.value = 0;
     input_number.required = true;
     let select = document.createElement('select');
     select.name = `quantity_ingredient_id[${i}]`;
-    select.setAttribute('class', "w-75 form-select");
+    select.setAttribute('class', "col-12 col-md-4 form-select");
     select.required = true;
     let option;
     for (let j = 0; j < ingredients.length; j++) {
         option = document.createElement('option');
         option.value = ingredients[j]['id'];
-        option.innerText = ingredients[j]['name'];
+        option.innerText = `${ingredients[j]['name']} ${ingredients[j]['measure'] !== '' ? `(${ingredients[j]['measure']})` : ''})`;
         select.appendChild(option);
     }
     let button = document.createElement('a');
-    button.setAttribute('class', 'btn btn-danger remove');
+    button.setAttribute('class', 'btn btn-danger remove col-12 col-md-4');
     button.innerText = "Remove";
     button.onclick = RemoveIngredient;
     group.appendChild(input_number);
