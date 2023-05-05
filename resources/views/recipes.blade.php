@@ -3,11 +3,14 @@
 @section('body')
 <!-- Recipe Grid-->
 <section class="page-section bg-dark" id="recipe">
-    <div class="container">
+    <div class="container mt-5">
         <div class="text-center">
             <h2 class="section-heading text-uppercase text-white">Recipies</h2>
             <h3 class="section-subheading text-muted">Look at different recipies.</h3>
         </div>
+        @auth
+            <a class="w-100 btn btn-success mb-5" href="{{ route('CreateRecipe') }}">Create New Recipe</a>
+        @endauth
         <div class="row">
           @for ($i = 0; $i < $recipes->count(); $i++)
           <div class="col-lg-4 col-sm-6 mb-4">
@@ -31,7 +34,7 @@
 <!-- recipe Modals-->
 <!-- recipe item 1 modal popup-->
 @for ($i = 0; $i < $recipes->count(); $i++)
-<div class="recipe-modal modal fade" id="recipeModal1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="recipe-modal modal fade" id="recipeModal{{ $i + 1 }}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content w-50 align-items-center">
           <div class="close-modal" data-bs-dismiss="modal"><img src="/img/close-icon.svg" alt="Close modal" /></div>
@@ -54,7 +57,7 @@
                           <ul class="list-inline">
                               @foreach($recipes[$i]->ingredients as $ingredient)
                               <li>
-                                  <strong>{{$ingredient->ingredient->name}}</strong> - 
+                                  <strong>{{$ingredient->ingredient->name}}</strong> -
                                   {{ $ingredient->quantity.' '.$ingredient->ingredient->measure }} ({{ $ingredient->ingredient->price }}$);
                               </li>
                               @endforeach

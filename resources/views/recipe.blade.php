@@ -6,7 +6,7 @@
   <input type="hidden" name="id" value="{{ $recipe?->id }}">
   <div class="input-group" style="margin-top: 80px">
     <figure class="figure w-25">
-      <img id="img" class="img-fluid rounded figure-img" {{ $recipe == null ? 'style="display:none;"' : '' }} src="{{ url('/storage/images/'.$recipe?->img) }}" alt="..." />
+      <img id="img" class="img-fluid rounded figure-img" src="{{ $recipe ? url('/storage/images/'.$recipe->img) : asset('img/default-image.jpg') }}" alt="..." />
     </figure>
     @csrf
     <input type="file" name="img" class="bg-dark text-white" accept=".jpg, .png, .gif" required>
@@ -52,8 +52,12 @@
 <script src="{{ asset('/js/textareas.js') }}">
 </script>
 <script>
-  loadURLToInputFiled("{{ url('/storage/images/'.$recipe?->img) }}", "{{ $recipe->img }}");
+    let url = "{{ url('/storage/images/'.$recipe?->img) }}";
+    let filename = "{{ $recipe?->img }}";
+    if (url && filename) {
+      loadURLToInputFiled(url, filename);
+    }
   i = {{ $ingredients->count() }};
-  ingredients = <?php echo json_encode($ingredients); ?>;
+  ingredients = {!! json_encode($ingredients); !!};
 </script>
 @endsection

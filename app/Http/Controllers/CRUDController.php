@@ -72,10 +72,53 @@ class CRUDController extends Controller
       return redirect('/recipes');
     }
 
-    public function Create(Request $request) {
-      Ingredient::create();
-      Quantity::create();
-      return redirect('/recipes');
+    public function Create() {
+      return view('recipe', ['recipe' => null, 'ingredients' => Ingredient::all()]);
+    }
+
+    public function CreatePost(Request $request) {
+        $validation = $request->validate([
+          'img' => 'required',
+          'name' => 'required',
+          'description' => 'required',
+          'instructions' => 'required',
+        ]); 
+        $img = $validation['img'];
+        $name = $validation['name'];
+        $description = $validation['description'];
+        $instructions = $validation['instructions'];
+        $images = Storage::disk('local')->files('public/images');
+        $bool = null;
+        for($i = 0; $i < count($images); $i++) {
+          if(md5_file(str_replace('publicpublic', '/public/storage', public_path().$images[$i])) === md5_file($img->getRealpath())){
+            $bool = str_replace('public/images/', '', ''.$images[$i]);
+          }
+        }
+        if ($bool != null) {
+          $img_name = $bool;
+        } else {
+          $img_name = ((string) Str::uuid()).'.'.$img->getClientOriginalExtension();
+          $img->storeAs('/public/images/', $img_name);
+        }
+        $recipe = Recipe::create([
+          'img' => $img_name,
+          'name' => $name,
+          'description' => $description,
+          'instructions' => $instructions
+        ]);
+        $value_quantities = $request->post('quantity');
+        $id_ingredients = $request->post('quantity_ingredient_id');
+        $id_ingredients = array_values($id_ingredients);
+        $value_quantities = array_values($value_quantities);
+        for ($i = 0; $i < count($value_quantities); $i++) {
+          $quantity = Quantity::create([
+            'quantity' => $value_quantities[$i],
+            'recipe_id' => $recipe->id,
+            'ingredient_id' => $id_ingredients[$i]
+          ]);
+          $quantity->save();
+        }
+        return redirect('/recipes');
     }
 
     public function Delete($name) {
