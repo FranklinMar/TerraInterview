@@ -69,7 +69,7 @@ class CRUDController extends Controller
         $quantity->save();
         //array_push($quantities, );
       }
-      return redirect('/recipes');
+      return redirect()->route('Recipes');
     }
 
     public function Create() {
@@ -118,7 +118,7 @@ class CRUDController extends Controller
           ]);
           $quantity->save();
         }
-        return redirect('/recipes');
+        return redirect()->route('Recipes');
     }
 
     public function Delete($name) {
@@ -126,6 +126,6 @@ class CRUDController extends Controller
       $recipe = Recipe::firstWhere('name', $name);
       Quantity::where('recipe_id', $recipe->id)->delete();
       $recipe->delete();
-      return redirect('/recipes');
+      return redirect()->route('Recipes');
     }
 }

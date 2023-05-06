@@ -13,15 +13,15 @@
         @endauth
         <div class="row">
           @for ($i = 0; $i < $recipes->count(); $i++)
-          <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="recipe-item">
+          <div class="col-lg-4 col-sm-6 mb-4 stretch">
+            <div class="recipe-item stretch flex-column">
                 <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal{{ $i + 1 }}">
                     <div class="recipe-hover">
                         <div class="recipe-hover-content"><h4>More</h4></div>
                     </div>
                     <img class="img-fluid" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
                 </a>
-                <div class="recipe-caption">
+                <div class="recipe-caption h-100 flex-column">
                     <div class="recipe-caption-heading">{{$recipes[$i]->name}}</div>
                     <div class="recipe-caption-subheading text-muted">{{explode('. ' ,$recipes[$i]->description)[0]}}</div>
                 </div>
@@ -34,8 +34,8 @@
 <!-- Recipe Modals-->
 @for ($i = 0; $i < $recipes->count(); $i++)
 <div class="recipe-modal modal fade" id="recipeModal{{ $i + 1 }}" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content w-50 mx-auto">
+  <div class="modal-dialog mx-auto">
+      <div class="modal-content">
           <div class="close-modal" data-bs-dismiss="modal"><img src="{{ asset('/img/close-icon.svg') }}" alt="Close modal" /></div>
           <div class="container">
               <div class="row justify-content-center">
@@ -51,7 +51,7 @@
                           </div>
                           @endauth
                           <img class="img-fluid d-block mx-auto rounded" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
-                          <p>{{$recipes[$i]->instructions}}</p>
+                          <p>{!! nl2br(e($recipes[$i]->instructions)) !!}</p>
                           <p class="item-intro text-muted h3">Ingredients</p>
                           <ul class="list-inline">
                               @foreach($recipes[$i]->ingredients as $ingredient)

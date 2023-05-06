@@ -18,15 +18,15 @@
         </div>
         <div class="row">
           @for ($i = 0; $i < $recipes->count(); $i++)
-          <div class="col-lg-4 col-sm-6 mb-4 h-100">
-            <div class="recipe-item">
+          <div class="col-lg-4 col-sm-6 mb-4 stretch">
+            <div class="recipe-item stretch flex-column">
                 <a class="recipe-link" data-bs-toggle="modal" href="#recipeModal{{ $i + 1 }}">
                     <div class="recipe-hover">
                         <div class="recipe-hover-content"><h4>More</h4></div>
                     </div>
-                    <img class="img-fluid h-75" src="{{ $recipes[$i]->img ? url('/storage/images/'.$recipes[$i]->img) : asset('/img/default-image.jpg') }}" alt="..." />
+                    <img class="img-fluid" src="{{ $recipes[$i]->img ? url('/storage/images/'.$recipes[$i]->img) : asset('/img/default-image.jpg') }}" alt="..." />
                 </a>
-                <div class="recipe-caption h-25">
+                <div class="recipe-caption h-100 flex-column">
                     <div class="recipe-caption-heading">{{$recipes[$i]->name}}</div>
                     <div class="recipe-caption-subheading text-muted">{{explode('. ' ,$recipes[$i]->description)[0]}}</div>
                 </div>
@@ -112,7 +112,7 @@
         </div>
         <div class="row">
             <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">These are our people. Team of different, proactive IT-specialists
-                 sharing similiar experience and bonds to developer of this project.</p></div>
+                 sharing similiar experience and bonds to the developer of this project.</p></div>
         </div>
     </div>
 </section>
@@ -182,9 +182,9 @@
 </section>
 <!-- recipe Modals-->
 @for ($i = 0; $i < $recipes->count(); $i++)
-<div class="recipe-modal modal fade" id="recipeModal1" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content w-50 mx-auto">
+<div class="recipe-modal modal fade" id="recipeModal{{ $i + 1 }}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog mx-auto">
+      <div class="modal-content">
           <div class="close-modal" data-bs-dismiss="modal"><img src="{{ asset('/img/close-icon.svg') }}" alt="Close modal" /></div>
           <div class="container">
               <div class="row justify-content-center">
@@ -194,13 +194,13 @@
                           <h2 class="text-uppercase">{{ $recipes[$i]->name }}</h2>
                           <p class="item-intro text-muted">{{ $recipes[$i]->description }}</p>
                           <img class="img-fluid d-block mx-auto rounded" src="{{ url('/storage/images/'.$recipes[$i]->img) }}" alt="..." />
-                          <p>{{$recipes[$i]->instructions}}</p>
+                          <p>{!! nl2br(e($recipes[$i]->instructions)) !!}</p>
                           <p class="item-intro text-muted h3">Ingredients</p>
                           <ul class="list-inline">
                               @foreach($recipes[$i]->ingredients as $ingredient)
                               <li>
                                   <strong>{{$ingredient->ingredient->name}}</strong> -
-                                  {{ $ingredient->quantity.' '.$ingredient->ingredient->measure }} ({{ $ingredient->ingredient->price }}$);
+                                  {{ $ingredient->quantity.' '.$ingredient->ingredient->measure }} ({{ $ingredient->ingredient->price * $ingredient->quantity }}$);
                               </li>
                               @endforeach
                           </ul>
